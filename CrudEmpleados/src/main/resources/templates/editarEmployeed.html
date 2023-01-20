@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ACTUALIZACION DE EMPLEADOS</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<div class="container">
+		<h2>Actulizacion empleados(employeed)</h2>
+		<br>
+		<form th:action="@{/api/EmployeedControl/guardar}" method="post" th:object="${emplo}">
+			<div class="mb-3">
+				<label>ID</label>
+				<input name="id" type="number" th:field="*{id}" class="form-control" placeholder="Ingrese el identificador">
+			</div>
+			<div class="mb-3">
+				<label>NOMBRE</label>
+				<input name="name" th:field="*{name}"  type="text" class="form-control" placeholder="Ingrese el nombre">
+			</div>
+			<div class="mb-3">
+				<label>SEGUNDO NOMBRE</label>
+				<input name="last_name" th:field="*{last_name}"  type="text" class="form-control" placeholder="Ingrese el segundo nombre">
+			</div>
+			<div class="mb-3">
+				<label>FECHA NACIMIENTO</label>
+				<input name="birthdate" th:field="*{birthdate}"  type="date" class="form-control">
+			</div>
+				<div class="mb-3">
+				<label>PUESTO QUE EJERCE</label>
+			<select name="jobs.id" class="form-control" th:field="*{jobs.id}"  > 
+					  <option value="0">Ingrese la marca</option>
+    					<option th:each="m : ${job}" th:value="${m.id}" th:text="${m.name}">
+				 </select>
+
+			</div>
+				<div class="mb-3">
+				<label>SEXO</label>
+			<select name="genders.id" class="form-control" th:field="*{genders.id}"  > 
+					  <option value="0">Ingrese la marca</option>
+    					<option th:each="m : ${gender}" th:value="${m.id}" th:text="${m.name}">
+				 </select>
+
+			</div>
+			
+			<button type="submit" class="btn btn-outline-success">Guardar</button>
+		</form>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+
+	<!--popper-->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+		integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+		integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
